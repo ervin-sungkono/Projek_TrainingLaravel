@@ -9,5 +9,9 @@ class GameAccount extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name','role','level'];
+    protected $fillable = ['name','role','level','server_id'];
+
+    public function server(){
+        return $this->belongsTo(Server::class);
+    }
 }
