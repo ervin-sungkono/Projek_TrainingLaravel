@@ -53,6 +53,12 @@
                 <li class="nav-item">      
                     <a class="nav-link" href="{{route('gameaccount.list')}}">View Characters</a>
                 </li>
+                <li class="nav-item">      
+                    <a class="nav-link" href="{{route('server.home')}}">Server</a>
+                </li>
+                <li class="nav-item">      
+                    <a class="nav-link" href="{{route('server.list')}}">View Servers</a>
+                </li>
              </ul>
         </nav>
         <div class="container">
@@ -74,10 +80,19 @@
                         <option value="Gunner">Gunner</option>
                         <option value="Paladin">Paladin</option>
                     </select>
-                  </div>
+                </div>
                 <div class="mb-3">
                   <label class="form-label">Character Level</label>
                   <input name="game_level" class="form-control" type="number" min="1" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Server</label>
+                    <select name="server_id" class="form-control" required>
+                        <option disabled selected value> -- Select a Server -- </option>
+                        @foreach($servers as $server)
+                        <option value="{{$server->id}}">{{$server->name}} - {{$server->region}}</option>
+                        @endforeach
+                    </select>
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>

@@ -27,14 +27,20 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="#">Navbar</a>
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="{{route('gameaccount.home')}}">Character</a>
-                </li>
-                <li class="nav-item">      
-                    <a class="nav-link active" href="{{route('gameaccount.list')}}">View Characters</a>
-                </li>
-            </ul>
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="{{route('gameaccount.home')}}">Character</a>
+            </li>
+            <li class="nav-item">      
+                <a class="nav-link active" href="{{route('gameaccount.list')}}">View Characters</a>
+            </li>
+            <li class="nav-item">      
+                <a class="nav-link" href="{{route('server.home')}}">Server</a>
+            </li>
+            <li class="nav-item">      
+                <a class="nav-link" href="{{route('server.list')}}">View Servers</a>
+            </li>
+        </ul>
     </nav>
     <div class="container">
         <h1>Game Account List</h1>
@@ -45,6 +51,7 @@
                 <th scope="col">Character Name</th>
                 <th scope="col">Character Role</th>
                 <th scope="col">Level</th>
+                <th scope="col">Server</th>
                 <th scope="col">Actions</th>
             </tr>
             </thead>
@@ -55,6 +62,7 @@
                     <td>{{$gameaccount->name}}</td>
                     <td>{{$gameaccount->role}}</td>
                     <td>{{$gameaccount->level}}</td>
+                    <td>{{$gameaccount->server->name}} - {{$gameaccount->server->region}}</td>
                     <td style="display: flex;">
                         <a href="{{route('gameaccount.edit', $gameaccount->id)}}" class="btn btn-success" style="margin-right:10px;">Edit</a>
                         <form action="{{route('gameaccount.delete', $gameaccount->id)}}" method="POST">

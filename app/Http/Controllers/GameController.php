@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\GameAccount;
+use App\Models\Server;
 
 class GameController extends Controller {
     public function index() {
-        return view('create');
+        $servers = Server::all();
+        return view('create', compact('servers'));
     }
 
     public function viewList() {
@@ -20,6 +22,7 @@ class GameController extends Controller {
             'name' => $request->game_name,
             'role' => $request->game_role,
             'level' => $request->game_level,
+            'server_id' => $request->server_id
         ]);
         return redirect('/');
     }
