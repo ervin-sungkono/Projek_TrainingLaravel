@@ -28,15 +28,17 @@ class GameController extends Controller {
     }
 
     public function edit($id) {
+        $servers = Server::all();
         $gameaccount = GameAccount::findOrFail($id);
-        return view('edit', compact('gameaccount'));
+        return view('edit', compact('gameaccount'), compact('servers'));
     }
 
     public function update($id, Request $request) {
         GameAccount::findOrFail($id)->update([
             'name' => $request->game_name,
             'role' => $request->game_role,
-            'level' => $request->game_level
+            'level' => $request->game_level,
+            'server_id' => $request->server_id
         ]);
         return redirect('/gameaccount');
     }

@@ -58,10 +58,18 @@
                         <option value="Gunner" <?php if($gameaccount->role=="Gunner") echo 'selected="selected"'; ?>>Gunner</option>
                         <option value="Paladin" <?php if($gameaccount->role=="Paladin") echo 'selected="selected"'; ?>>Paladin</option>
                     </select>
-                  </div>
+                </div>
                 <div class="mb-3">
                   <label class="form-label">Character Level</label>
                   <input name="game_level" class="form-control" type="number" min="1" value="{{$gameaccount->level}}" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Server</label>
+                    <select name="server_id" class="form-control" required>
+                        @foreach($servers as $server)
+                        <option value="{{$server->id}}" <?php if($server->id==$gameaccount->server_id) echo 'selected="selected"'; ?>>{{$server->name}} - {{$server->region}}</option>
+                        @endforeach
+                    </select>
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
